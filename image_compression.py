@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import NMF
 from time import time
 
-IMG_PATH = "/Users/larakirby/Desktop/Screenshot 2025-08-04 at 9.07.31 AM.png"
+from constants import path as IMG_PATH
 
 def preprocess_image(IMG_PATH) -> np.array:
     # 1) Load and preprocess the image

@@ -4,7 +4,7 @@ from time import time
 import matplotlib.pyplot as plt
 
 # constants
-EPSILON = 10**-6
+from constants import epsilon 
 
 
 def load_boston():
@@ -73,7 +73,7 @@ def power_method_single(A: np.array) -> tuple:
     lambda_k = 100
     error = 1
 
-    while error >= EPSILON:
+    while error >= epsilon:
         x_k_1 = np.dot(A, x_k)
         new_x = x_k_1 / np.linalg.norm(x_k_1)
         new_lambda = (new_x.T @ A @ new_x) / (new_x.T @ new_x)
@@ -139,7 +139,7 @@ def hessenberg_inverse_variation(l, H, P) -> np.array:
     max_iter = 1000
     i = 0
 
-    while error >= EPSILON and i < max_iter:
+    while error >= epsilon and i < max_iter:
         z_k = np.linalg.solve(H - l * np.eye(H.shape[0]), y)
         if not np.linalg.norm(z_k):
             # if the norm of z_k is zero, try another guess.
@@ -150,7 +150,7 @@ def hessenberg_inverse_variation(l, H, P) -> np.array:
         error = np.linalg.norm(H @ z_k - l * z_k)
 
         # check for convergence
-        if error < EPSILON:
+        if error < epsilon:
             return P @ z_k
         y = z_k
         i += 1
@@ -226,7 +226,7 @@ def basic_qr_iteration(A) -> list:
 
     A_k_minus_1 = H.copy()
     error = 1
-    while error >= EPSILON:
+    while error >= epsilon:
 
         # 2: QR factorization
         Q_k, R_k = np.linalg.qr(A_k_minus_1)
@@ -288,7 +288,7 @@ def symmetric_qr_iteration_with_shift(A) -> list:
     Tk_minus_one = T.copy().astype(float)
     n = T.shape[0]
     error = 1
-    while error >= EPSILON:
+    while error >= epsilon:
         # 2: calculate Wilkinson Shift
         mu = wilkinson_shift(Tk_minus_one)
 

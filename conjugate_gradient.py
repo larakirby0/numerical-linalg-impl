@@ -1,5 +1,11 @@
 from math import sqrt
 
+# CONSTANTS
+from constants import ca, ci, cj, epsilon, b
+initial_guess = [0, 0, 0, 0, 0, 0, 0, 0]
+epsilon_4 = 10**-4
+epsilon_8 = 10**-8
+
 
 # SHARED FUNCTIONS
 def sparse_matrix_vector_multiply(matrix_elements, row_indices, column_indices, vector):
@@ -365,16 +371,6 @@ def preconditioned_conjugate_gradient(
         current_r = next_r
 
     return current_x, iterations
-
-
-# CONSTANTS
-ca = [4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] # fmt: skip
-ci = [1, 2, 3, 4, 5, 6, 7, 8, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8] # fmt: skip
-cj = [1, 2, 3, 4, 5, 6, 7, 8, 2, 5, 1, 3, 6, 2, 4, 7, 3, 5, 8, 1, 4, 6, 2, 5, 7, 3, 6, 8, 4, 7] # fmt: skip
-b = [6, 7, 7, 7, 7, 7, 7, 6]
-initial_guess = [0, 0, 0, 0, 0, 0, 0, 0]
-epsilon_4 = 10**-4
-epsilon_8 = 10**-8
 
 # call the functions
 classic_4, classic_4_iterations = conjugate_gradient(
