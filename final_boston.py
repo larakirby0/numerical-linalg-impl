@@ -4,11 +4,11 @@ from time import time
 import matplotlib.pyplot as plt
 
 # constants
-from constants import epsilon 
+from constants import epsilon
 
 
 def load_boston():
-    # a function I looked up to create the original dataset.
+    """The deprecated boston dataset."""
     url = "http://lib.stat.cmu.edu/datasets/boston"
     raw_df = pd.read_csv(url, sep="\s+", skiprows=22, header=None)
 

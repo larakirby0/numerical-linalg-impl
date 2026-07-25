@@ -1,9 +1,10 @@
 from dotenv import load_dotenv
 import os
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
-path = os.get("IMG_PATH")
+print(os.environ)
+path = os.environ["IMG_PATH"]
 
 ca = [4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] # fmt: skip
 ci = [1, 2, 3, 4, 5, 6, 7, 8, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8] # fmt: skip

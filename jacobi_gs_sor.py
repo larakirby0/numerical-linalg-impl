@@ -1,8 +1,7 @@
 """Implementation of Jacobi, Gauss-Siedel, and SOR Iterative methods."""
 
 # CONSTANTS
-from constants import initial_guess, ca, ci, cj, b, epsilon
-
+from constants import initial_guess, ca, ci, cj, b, epsilon, omega
 
 
 # SHARED FUNCTIONS
@@ -46,7 +45,9 @@ def subtract_vectors(x, y):
 def is_finished(current_guess, ca, ci, cj, epsilon) -> bool:
     """If ||b-Ax||/||b|| < epsilon, return True."""
     b_norm = vector_norm(b)
-    b_minus_Ax = subtract_vectors(b, multiply_matrix_and_vector(ca, ci, cj, current_guess))
+    b_minus_Ax = subtract_vectors(
+        b, multiply_matrix_and_vector(ca, ci, cj, current_guess)
+    )
     b_minus_Ax_norm = vector_norm(b_minus_Ax)
     print("CURRENT ERROR", (b_minus_Ax_norm / b_norm))
     return (b_minus_Ax_norm / b_norm) < epsilon
@@ -78,7 +79,9 @@ def jacobi(initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=epsilo
 
 
 # GAUSS-SEIDEL
-def gauss_seidel(initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=epsilon):
+def gauss_seidel(
+    initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=epsilon
+):
     """Iterate predictions for an initial guess using the Gauss-Seidel method."""
     current_guess = initial_guess
     variations = 0
@@ -107,7 +110,9 @@ def gauss_seidel(initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=
 
 
 # SOR
-def successive_overrelaxation(initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=epsilon, omega=omega):
+def successive_overrelaxation(
+    initial_guess=initial_guess, ca=ca, ci=ci, cj=cj, b=b, epsilon=epsilon, omega=omega
+):
     """Iterate predictions for an initial guess using the Successive Overrelaxation method."""
     current_guess = initial_guess
     variations = 0

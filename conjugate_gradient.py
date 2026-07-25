@@ -2,6 +2,7 @@ from math import sqrt
 
 # CONSTANTS
 from constants import ca, ci, cj, epsilon, b
+
 initial_guess = [0, 0, 0, 0, 0, 0, 0, 0]
 epsilon_4 = 10**-4
 epsilon_8 = 10**-8
@@ -371,6 +372,7 @@ def preconditioned_conjugate_gradient(
         current_r = next_r
 
     return current_x, iterations
+
 
 # call the functions
 classic_4, classic_4_iterations = conjugate_gradient(
